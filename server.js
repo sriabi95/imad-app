@@ -5,20 +5,37 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
-    title : 'article-one',
-    heading : 'article-one',
-    content : `<p>
-                This is the content of my first article.
-            </p>
-            <p>
-                This is the content of my first article.
-            </p>
-            <p>
-                This is the content of my first article.
-            </p>`
-    
+var articles = {
+    articleOne : {
+        title : 'article-one',
+        heading : 'article-one',
+        content : `<p>
+                    This is the content of my first article.
+                </p>
+                <p>
+                    This is the content of my first article.
+                </p>
+                <p>
+                    This is the content of my first article.
+                </p>`
+    },
+    articleTwo : {
+        title : 'article-two',
+        heading : 'article-two',
+        content : `<p>
+                    This is the content of my second article.
+                    </p>`                    
+    },
+    articleThree : {
+        title : 'article-three',
+        heading : 'article-three',
+        content : `<p>
+                    This is the content of my third article.
+                </p>`
+                
+    }
 };
+    
 
 
 function createTemplate(data){
@@ -74,17 +91,19 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/article-one', function (req, res) {
- res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+    //articleName == article-one
+    //articles[articleName] == content object for article-one
+ res.send(createTemplate(articles[articleName]));
 });
 
-app.get('/article-two', function (req, res) {
+/*app.get('/article-two', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
 });
 
 app.get('/article-three', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
+});*/
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
