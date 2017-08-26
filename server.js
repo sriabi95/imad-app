@@ -109,9 +109,20 @@ app.get('/:articleName', function (req, res) {
  res.send(createTemplate(articles[articleName]));
 });
 
-var names = [];
+/*var names = [];
 app.get('/submit-name/:name',function (req, res){
     var name = req.params.name;
+    names.push(name);
+    //JSON java script object notation
+    res.send(JSON.stringify(names));
+});
+*/
+
+//query parameter
+
+var names = [];
+app.get('/submit-name/:name',function (req, res){
+    var name = req.query.name;
     names.push(name);
     //JSON java script object notation
     res.send(JSON.stringify(names));
