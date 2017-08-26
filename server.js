@@ -114,7 +114,7 @@ app.get('/submit-name/:name',function (req, res){
 //query parameter
 
 var names = [];
-app.get('/submit-name',function (req, res){ //submit-name?name=xxxx
+app.get('/submit-name',function (req, res){  //url : /submit-name?name=xxxx
     var name = req.query.name;
     names.push(name);
     //JSON java script object notation
