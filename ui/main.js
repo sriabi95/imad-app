@@ -1,5 +1,7 @@
 
-var button = document.getElementById('counter');
+//counter increment reflected in server also
+
+/*var button = document.getElementById('counter');
 
 button.onclick = function(){
 //create a request object
@@ -16,15 +18,16 @@ button.onclick = function(){
     //make a request
     request.open('GET','http://sriabi95.imad.hasura-app.io/counter',true);
     request.send(null);
-};
+};*/
 
+//submit name
 
-var submit = document.getElementbyId('submit_btn');
+var submit = document.getElementbyId('submit-btn');
 submit.onclick = function(){
     var request = new XMLHttpRequest();
      request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            if(request.status == 200){      //200 is the successful response
+            if(request.status === 200){      //200 is the successful response
                 /*var counter = request.responseText;
                 var span = document.getElementById('count');
                 span.innerHTML = counter.toString();*/
