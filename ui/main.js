@@ -1,7 +1,7 @@
 
 //counter increment reflected in server also
 
-/*var button = document.getElementById('counter');
+var button = document.getElementById('counter');
 
 button.onclick = function(){
 //create a request object
@@ -18,7 +18,7 @@ button.onclick = function(){
     //make a request
     request.open('GET','http://sriabi95.imad.hasura-app.io/counter',true);
     request.send(null);
-};*/
+};
 
 //submit name
 
