@@ -110,10 +110,11 @@ app.get('/:articleName', function (req, res) {
 });
 
 var names = [];
-app.get('/submit-name',function (req, res){
-    var name;
+app.get('/submit-name/:name',function (req, res){
+    var name = req.params.name;
     names.push(name);
-    res.send(names);
+    //JSON java script object notation
+    res.send(JSON.stringify(names));
 });
 
 /*app.get('/article-two', function (req, res) {
