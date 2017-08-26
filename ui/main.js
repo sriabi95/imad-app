@@ -22,7 +22,7 @@ button.onclick = function(){
 
 //submit name
 
-var submit = document.getElementbyId('submit-btn');
+var submit = document.getElementById('submit-btn');
 submit.onclick = function(){
     var request = new XMLHttpRequest();
      request.onreadystatechange = function(){
@@ -37,10 +37,10 @@ submit.onclick = function(){
                 
                 var list = '';
                 for(var i=0; i<names.length; i++){
-                    list += '<li>' + names[i] + '</li>';
+                    list = list + '<li>' + names[i] + '</li>';
                 }
-                var ul = document.getElementbyId('namelist');
-                ul.innerHTML = list;
+                var u = document.getElementById('namelist');
+                u.innerHTML = list;
             }
         } 
      };
