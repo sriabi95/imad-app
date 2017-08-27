@@ -27,7 +27,7 @@ submit.onclick = function(){
     var request = new XMLHttpRequest();
      request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            if(request.status === 200){      //200 is the successful response
+//            if(request.status === 200){      //200 is the successful response
                 /*var counter = request.responseText;
                 var span = document.getElementById('count');
                 span.innerHTML = counter.toString();*/
@@ -51,7 +51,7 @@ submit.onclick = function(){
                 else if(request.status === 500){
                    alert('something went wrong on the server');
                 }
-            }
+//            }
         } 
      };
     //make a request
