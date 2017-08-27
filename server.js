@@ -113,7 +113,7 @@ function hash(input){
 }
 
 app.get('/hash/:input',function(req,res){                                       //week4
-    var hashedString = hash(req.params.input, 'this-is-some-random-string');
+    var hashedString = hash(req.params.input, salt);
     res.send(hashedString);
 });
 
