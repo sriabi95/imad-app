@@ -14,7 +14,7 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-var articles = {
+/*var articles = {
     'article-one' : {
         title : 'article-one',
         heading : 'article-one',
@@ -46,7 +46,7 @@ var articles = {
                 </p>`
                 
     }
-};
+};*/
     
 function createTemplate(data){
     var title = data.title;
@@ -147,7 +147,13 @@ app.get('/submit-name',function (req, res){  //url : /submit-name?name=xxxx
 app.get('/articles/:articleName', function (req, res) {
     //articleName == article-one
     //articles[articleName] == content object for article-one
- pool.query("SELECT * FROM articles WHERE title = '"+ req.params.articleName + "'", function(err,result){
+    
+// pool.query("SELECT * FROM articles WHERE title = '"+ req.params.articleName + "'", function(err,result){ 
+    //unsafe as user can use delete statement to delete the content also
+    //'; DELETE FROM articles WHERE a='asdf'
+
+//it is safe to use parameterization by /
+     pool.query("SELECT * FROM articles WHERE title = $1", [req.params.articleName], function(err,result){
      if(err){
          res.status(500).send(err.toString());
      }
