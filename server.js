@@ -107,7 +107,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-function hash(input,salt){
+function hash(input,salt){                                                      //week4
   var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512'); //synchronous Password-Based Key Derivation Function 2 (PBKDF2) 
   return ['pbkdf2', '10000', salt, hashed.toString('hex')].join('$');
 }
@@ -115,6 +115,11 @@ function hash(input,salt){
 app.get('/hash/:input',function(req,res){                                       //week4
     var hashedString = hash(req.params.input, 'this-is-some-random-string');
     res.send(hashedString);
+});
+
+app.get('/create-user',function(req,res){
+    var salt = crypto.getRandomBytes(128).toString('hex');
+    var dbString = hash(password, salt);
 });
 
 
