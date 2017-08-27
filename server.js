@@ -18,6 +18,7 @@ var articles = {
     'article-one' : {
         title : 'article-one',
         heading : 'article-one',
+        date : 'Aug 25th 2017',
         content : `<p>
                     This is the content of my first article.
                 </p>
@@ -31,6 +32,7 @@ var articles = {
     'article-two' : {
         title : 'article-two',
         heading : 'article-two',
+        date : 'Aug 26th 2017',
         content : `<p>
                     This is the content of my second article.
                     </p>`                    
@@ -38,6 +40,7 @@ var articles = {
     'article-three' : {
         title : 'article-three',
         heading : 'article-three',
+        date : 'Aug 27th 2017',
         content : `<p>
                     This is the content of my third article.
                 </p>`
@@ -48,6 +51,7 @@ var articles = {
 function createTemplate(data){
     var title = data.title;
     var heading = data.heading;
+    var date = data.date;
     var content = data.content;
     var htmlTemplate = 
         `<html>
@@ -71,7 +75,7 @@ function createTemplate(data){
                     </h3>
                     
                     <div>
-                        August 25th, 2017
+                        ${date.toDateString}
                     </div>
                     
                     <div>
@@ -143,7 +147,7 @@ app.get('/submit-name',function (req, res){  //url : /submit-name?name=xxxx
 app.get('/articles/:articleName', function (req, res) {
     //articleName == article-one
     //articles[articleName] == content object for article-one
- pool.query("SELECT * FROM articles WHERE title = "+ req.params.articleName, fuction(err,result){
+ pool.query("SELECT * FROM articles WHERE title = '"+ req.params.articleName + "'", function(err,result){
      if(err){
          res.status(500).send(err.toString());
      }
