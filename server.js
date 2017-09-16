@@ -161,7 +161,7 @@ app.post('/login',function(req,res){
             
                 //set the session
                 req.session.auth = {userId : result.rows[0].id};
-                req.send('credentials are correct');
+                res.send('credentials are correct');
             }
             else{
                 res.status(403).send('username/password is invalid');
@@ -170,6 +170,14 @@ app.post('/login',function(req,res){
         }
       }
     });
+});
+
+app.get('/check-login',function(req,res){
+    if(req.session && req.session.auth && req.session.auth.userId){
+        res.send('you are logged in : '+userId);
+    }else{
+        res.send('you are not logged in ');
+    }
 });
 
 var counter = 0;
