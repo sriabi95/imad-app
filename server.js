@@ -160,8 +160,8 @@ app.post('/login',function(req,res){
                 res.send('credentials are correct..');
             
                 //set the session
-                
-                
+                req.session.auth = {userId : result.rows[0].id};
+                req.send('credentials are correct');
             }
             else{
                 res.status(403).send('username/password is invalid');
