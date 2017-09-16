@@ -157,7 +157,7 @@ app.post('/login',function(req,res){
             var salt = dbString.split('$')[2];
             var hashedPassword = hash(password, salt);
             if(hashedPassword === dbString){
-                res.send('credentials are correct..');
+//                res.send('credentials are correct..');
             
                 //set the session
                 req.session.auth = {userId : result.rows[0].id};
